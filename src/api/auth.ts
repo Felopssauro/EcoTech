@@ -27,7 +27,9 @@ export async function login(credenciais: Credenciais): Promise<LoginResposta> {
       if (status === 429) {
         throw new Error("Muitas tentativas. Aguarde um pouco e tente novamente.", { cause: erro })
       }
-      if (status && status >= 400 && status < 500) {
+      // Só 400/401 vêm da API recusando o login. Um 404 ou 5xx quer dizer que
+      // a API não está rodando ou que outro programa respondeu no lugar dela.
+      if (status === 400 || status === 401) {
         throw new Error(MSG_CREDENCIAIS_INVALIDAS, { cause: erro })
       }
       throw new Error("Não foi possível conectar ao servidor. Tente novamente.", { cause: erro })

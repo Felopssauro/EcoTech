@@ -1,75 +1,68 @@
-# React + TypeScript + Vite
+# Site do evento
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Front-end em React + Vite (`src/`) e API em Express + Postgres/Neon (`server/`).
 
-Currently, two official plugins are available:
+## Como rodar
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Precisa do **Node 22 LTS** ou mais novo ([nodejs.org](https://nodejs.org)).
 
-## React Compiler
+1. Instale os pacotes. Rode de novo **depois de todo `git pull`**, porque
+   podem ter chegado pacotes novos:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+   ```bash
+   npm install
+   ```
 
-## Expanding the ESLint configuration
+2. Crie o arquivo `.env` a partir do exemplo e preencha a `DATABASE_URL`
+   (peça a URL para quem cuida do banco; ela **não** vai para o git):
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+   ```bash
+   cp .env.example .env
+   ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+   No Windows, sem o `cp`: copie o arquivo e renomeie para `.env`. Confira se
+   não ficou `.env.txt`.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+3. Suba tudo com **um comando só**:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+   ```bash
+   npm run dev
+   ```
 
+   Antes de subir, ele confere o ambiente e explica o que falta. Depois,
+   abra o endereço `Local` que aparecer, normalmente http://localhost:5173.
+
+## Deu errado?
+
+```bash
+npm run diagnostico
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Ele confere a versão do Node, os pacotes, o `.env`, a conexão com o banco e a
+porta da API, e diz o que fazer em cada caso. Os problemas mais comuns:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Sintoma | Causa provável | O que fazer |
+|---|---|---|
+| `node: .env: not found` | Falta o arquivo `.env` | Passo 2 acima |
+| "A porta 3000 já está em uso" | Outro projeto rodando na 3000 | Feche o outro ou coloque `PORT=3001` no `.env` |
+| "Não foi possível conectar ao servidor" no login | A API não está rodando | Rode `npm run dev` e veja o erro no terminal |
+| Erro de conexão com o banco | Internet, URL errada ou rede bloqueando o Neon | Teste em outra rede ou no 4G do celular |
+| "Credenciais inválidas" | E-mail ou senha errados | Os participantes `@exemplo.com` não têm senha; crie um admin com `npm run db:admin` |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Outros comandos
 
-```
+| Comando | Para quê |
+|---|---|
+| `npm run dev:front` | Só o site (Vite) |
+| `npm run dev:api` | Só a API, reiniciando a cada mudança |
+| `npm run db:setup` | Cria as tabelas no banco (uma vez por banco novo) |
+| `npm run db:admin` | Cria um admin ou troca a senha de um |
+| `npm run db:popular` | Coloca participantes e minicursos fictícios (`-- --limpar` remove) |
+| `npm run build` | Gera a versão de produção em `dist/` |
+| `npm run lint` | Confere o código |
+
+### Sem banco (modo simulado)
+
+Com `VITE_USE_MOCK=true` no `.env`, o site roda sem API nem banco, com dados
+de exemplo. Só as contas de teste de [src/mocks/mock.ts](src/mocks/mock.ts)
+entram, e só nesse modo.

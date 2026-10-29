@@ -18,6 +18,10 @@ if (process.env.FRONTEND_URL) app.use(cors({ origin: process.env.FRONTEND_URL })
 app.use(express.json({ limit: "50kb" }))
 
 const api = express.Router()
+// Usada pelo npm run diagnostico para saber se quem responde na porta é esta API
+api.get("/saude", (_req, res) => {
+  res.json({ api: "inscricoes", ok: true })
+})
 api.use("/auth", rotasAuth)
 api.use("/minha-inscricao", rotasParticipante)
 api.use("/admin", rotasAdmin)
