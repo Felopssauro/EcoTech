@@ -5,7 +5,7 @@ import { redefinirSenha } from "../api/auth"
 import { useAuth } from "../hooks/useAuth"
 import { BOTAO_PRIMARIO } from "../consts/estilos"
 import { validarSenha, type ErrosForm } from "../helpers/validacao"
-import { Campo, MensagemErro } from "../components/form/Campos"
+import { Campo, MensagemErro } from "../components/form"
 import CartaoAcesso from "../components/CartaoAcesso"
 
 // Página aberta pelo link do e-mail: /redefinir-senha?token=...

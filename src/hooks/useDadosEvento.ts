@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react"
-import { listarAtividades, obterEvento } from "../api/inscricoes"
+import { listarAtividades, obterEvento } from "../services/inscricoes"
 import type { AtividadeComVagas, DadosEvento } from "../types/inscricao"
 
 // Carrega os dados do evento e as atividades com vagas atualizadas

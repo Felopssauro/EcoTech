@@ -1,5 +1,5 @@
-import { get, post, put } from "./api"
-import { comTratamento } from "./erros"
+import { get, post, put } from "../api/api"
+import { comTratamento } from "../api/erros"
 import { SITE_PADRAO } from "../consts/site"
 import { USAR_MOCK } from "../mocks/mock"
 import type { ConfigSite, EventoAnterior, SiteResposta } from "../types/site"

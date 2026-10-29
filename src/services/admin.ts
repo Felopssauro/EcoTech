@@ -1,5 +1,5 @@
-import { del, get, post, put } from "./api"
-import { comTratamento } from "./erros"
+import { del, get, post, put } from "../api/api"
+import { comTratamento } from "../api/erros"
 import { lerSessao } from "../helpers/sessao"
 import type { AtividadeEvento, DadosEvento, Inscricao } from "../types/inscricao"
 import { USAR_MOCK } from "../mocks/mock"

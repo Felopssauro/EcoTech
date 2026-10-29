@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState, type FormEvent } from "react"
 import { ArrowDown, ArrowUp, Trash2 } from "lucide-react"
-import { encerrarEvento, salvarSite } from "../../api/site"
+import { encerrarEvento, salvarSite } from "../../services/site"
 import { ROTAS_CONHECIDAS } from "../../consts/site"
 import { BOTAO_PERIGO, BOTAO_PRIMARIO, BOTAO_SECUNDARIO, CARTAO } from "../../consts/estilos"
 import SeletorImagem from "./SeletorImagem"
 import { variaveisCss } from "../../helpers/site"
-import { Campo, MensagemErro, MensagemSucesso } from "../form/Campos"
-import HomeView from "../HomeView"
+import { Campo, MensagemErro, MensagemSucesso } from "../../components/form"
+import HomeView from "../../components/HomeView"
 import type { ConfigSite, ItemMenu, SiteResposta, TemplateSite } from "../../types/site"
 
 interface Props {

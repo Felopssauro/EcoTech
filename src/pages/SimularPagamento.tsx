@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { useSearchParams } from "react-router-dom"
 import { CircleCheck, CircleX, Loader } from "lucide-react"
-import { simularPagamento } from "../api/inscricoes"
+import { simularPagamento } from "../services/inscricoes"
 import { formatarMoeda } from "../helpers/formatar"
 import CartaoAcesso from "../components/CartaoAcesso"
 

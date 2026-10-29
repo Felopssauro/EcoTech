@@ -1,5 +1,5 @@
-import { get, put } from "./api"
-import { comTratamento } from "./erros"
+import { get, put } from "../api/api"
+import { comTratamento } from "../api/erros"
 import { SOBRE_PADRAO } from "../consts/sobre"
 import { USAR_MOCK } from "../mocks/mock"
 import type { ConfigSobre } from "../types/sobre"

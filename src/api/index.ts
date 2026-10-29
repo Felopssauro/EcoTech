@@ -1,5 +1,5 @@
 export * from "./api"
 export * from "./axiosClient"
 export * from "./auth"
-export * from "./inscricoes"
-export * from "./admin"
+export * from "../services/inscricoes"
+export * from "../services/admin"

@@ -2,7 +2,7 @@ import { CAMPOS_CATEGORIA, CATEGORIAS, OPCOES_ACESSIBILIDADE } from "../../const
 import { formatarTelefone } from "../../helpers/formatar"
 import type { ErrosForm } from "../../helpers/validacao"
 import type { DadosParticipante, RecursoAcessibilidade } from "../../types/inscricao"
-import { CaixaSelecao, Campo, GrupoPills, Painel } from "../form/Campos"
+import { CaixaSelecao, Campo, GrupoPills, Painel } from "../form"
 
 interface Props {
   dados: DadosParticipante

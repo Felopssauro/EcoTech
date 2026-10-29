@@ -1,5 +1,5 @@
-import { get, post, put } from "./api"
-import { comTratamento } from "./erros"
+import { get, post, put } from "../api/api"
+import { comTratamento } from "../api/erros"
 import { lerSessao } from "../helpers/sessao"
 import type { LoginResposta, Usuario } from "../types/auth"
 import type {

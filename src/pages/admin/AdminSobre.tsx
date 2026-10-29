@@ -1,9 +1,9 @@
 import { useState, type FormEvent } from "react"
 import { ArrowDown, ArrowUp, Trash2 } from "lucide-react"
-import { salvarSobre } from "../../api/sobre"
+import { salvarSobre } from "../../services/sobre"
 import { BOTAO_PRIMARIO, BOTAO_SECUNDARIO, CARTAO } from "../../consts/estilos"
 import { lerImagem } from "../../helpers/imagem"
-import { Campo, MensagemErro, MensagemSucesso } from "../form/Campos"
+import { Campo, MensagemErro, MensagemSucesso } from "../../components/form"
 import type { ConfigSobre, Entidade } from "../../types/sobre"
 
 interface Props {

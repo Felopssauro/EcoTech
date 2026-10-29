@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from "react"
 import QRCode from "qrcode"
 import { RefreshCw, Smartphone } from "lucide-react"
-import { minhaInscricao, obterCobranca, simularPagamento } from "../../api/inscricoes"
+import { minhaInscricao, obterCobranca, simularPagamento } from "../../services/inscricoes"
 import { BOTAO_SECUNDARIO, CARTAO } from "../../consts/estilos"
 import { formatarMoeda } from "../../helpers/formatar"
-import { MensagemErro } from "../form/Campos"
+import { MensagemErro } from "../form"
 import type { AtividadeEvento, DadosEvento, Inscricao } from "../../types/inscricao"
 
 interface Props {
@@ -77,7 +77,7 @@ export default function PagamentoPix({ inscricao, evento, atividades, onPago }: 
   return (
     <div className={`${CARTAO} grid gap-8 md:grid-cols-[auto_1fr] md:items-start`}>
       <div className="flex flex-col items-center">
-        <div className="flex h-[272px] w-[272px] items-center justify-center rounded-2xl border-2 border-eco-blue bg-white p-1.5">
+        <div className="flex h-68 w-68 items-center justify-center rounded-2xl border-2 border-eco-blue bg-white p-1.5">
           {qr ? (
             <img src={qr} alt="QR Code para pagar a inscrição" className="h-full w-full" />
           ) : (

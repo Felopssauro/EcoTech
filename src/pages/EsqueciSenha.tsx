@@ -4,7 +4,7 @@ import { KeyRound, MailCheck } from "lucide-react"
 import { solicitarRedefinicaoSenha } from "../api/auth"
 import { BOTAO_PRIMARIO, BOTAO_SECUNDARIO } from "../consts/estilos"
 import { emailValido } from "../helpers/validacao"
-import { Campo, MensagemErro } from "../components/form/Campos"
+import { Campo, MensagemErro } from "../components/form"
 import CartaoAcesso from "../components/CartaoAcesso"
 
 export default function EsqueciSenha() {

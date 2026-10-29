@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from "react"
 import { Link, Navigate, useNavigate } from "react-router-dom"
 import { ArrowLeft } from "lucide-react"
-import { minhaInscricao } from "../api/inscricoes"
+import { minhaInscricao } from "../services/inscricoes"
 import { useDadosEvento } from "../hooks/useDadosEvento"
 import PagamentoPix from "../components/inscricao/PagamentoPix"
-import { MensagemErro } from "../components/form/Campos"
+import { MensagemErro } from "../components/form"
 import type { Inscricao } from "../types/inscricao"
 
 // "Pagar agora" da conta: para quem fez a inscrição e saiu antes de pagar

@@ -1,14 +1,14 @@
 import { useEffect, useMemo, useState } from "react"
 import { Accessibility, Download, Eye, Search } from "lucide-react"
-import { listarInscritos } from "../../api/admin"
+import { listarInscritos } from "../../services/admin"
 import { CATEGORIAS, OPCOES_ACESSIBILIDADE } from "../../consts/inscricao"
 import { BOTAO_PRIMARIO, BOTAO_SECUNDARIO, CARTAO, SELO } from "../../consts/estilos"
 import { exportarInscritosCsv } from "../../helpers/arquivos"
 import { formatarData, formatarMoeda } from "../../helpers/formatar"
 import { horario } from "../../helpers/atividades"
-import { CaixaSelecao, MensagemErro, Selecao } from "../form/Campos"
-import { ResumoDados, SelosAcessibilidade } from "../inscricao/Leitura"
-import Modal from "../Modal"
+import { CaixaSelecao, MensagemErro, Selecao } from "../../components/form"
+import { ResumoDados, SelosAcessibilidade } from "../../components/inscricao/Leitura"
+import Modal from "../../components/Modal"
 import type { AtividadeEvento, Inscricao } from "../../types/inscricao"
 
 function Indicador({ titulo, valor }: { titulo: string; valor: string | number }) {
@@ -82,7 +82,7 @@ export default function AdminInscritos({ atividades }: { atividades: AtividadeEv
   if (erro) return <MensagemErro>{erro}</MensagemErro>
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex min-w-0 max-w-full flex-col gap-6">
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         <Indicador titulo="Inscrições confirmadas" valor={confirmadas.length} />
         <Indicador titulo="Pedem acessibilidade" valor={comAcessibilidade.length} />
@@ -117,7 +117,7 @@ export default function AdminInscritos({ atividades }: { atividades: AtividadeEv
         </div>
       </article>
 
-      <article className={CARTAO}>
+      <article className={`${CARTAO} min-w-0 max-w-full`}>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h2 className="font-sora text-lg font-bold text-eco-blue">Lista de inscritos</h2>
           <button
@@ -170,8 +170,8 @@ export default function AdminInscritos({ atividades }: { atividades: AtividadeEv
           Mostrar só quem pediu acessibilidade
         </CaixaSelecao>
 
-        <div className="mt-5 overflow-x-auto rounded-xl border border-eco-blue/15">
-          <table className="w-full min-w-[760px] text-left font-sora text-sm">
+        <div className="relative mt-5 w-full max-w-full overflow-x-auto rounded-xl border border-eco-blue/15">
+          <table className="w-full min-w-250 text-left font-sora text-sm">
             <thead className="bg-eco-blue-soft text-xs text-eco-blue">
               <tr>
                 <th scope="col" className="px-4 py-3">Inscrito</th>
@@ -191,15 +191,23 @@ export default function AdminInscritos({ atividades }: { atividades: AtividadeEv
                     <p className="text-xs text-eco-gray">{i.participante.email}</p>
                     <p className="text-[11px] text-eco-gray-light">{i.numero}</p>
                   </td>
-                  <td className="px-4 py-3 text-eco-gray">{i.participante.categoria}</td>
-                  <td className="px-4 py-3 text-xs text-eco-gray">
-                    {i.atividadesIds.length ? i.atividadesIds.map(nomeAtividade).join(", ") : "—"}
+                  <td className="whitespace-nowrap px-4 py-3 text-eco-gray">{i.participante.categoria}</td>
+                  <td className="min-w-52 px-4 py-3 text-xs text-eco-gray">
+                    {i.atividadesIds.length ? (
+                      <ul className="flex flex-col gap-1">
+                        {i.atividadesIds.map((id) => (
+                          <li key={id}>{nomeAtividade(id)}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      "—"
+                    )}
                   </td>
-                  <td className="max-w-56 px-4 py-3">
+                  <td className="min-w-56 px-4 py-3 [&_span]:whitespace-nowrap [&_p]:whitespace-nowrap [&_p]:text-xs">
                     <SelosAcessibilidade inscricao={i} />
                   </td>
                   <td className="whitespace-nowrap px-4 py-3 text-eco-blue">{formatarMoeda(i.valorTotal)}</td>
-                  <td className="px-4 py-3"><SeloStatus inscricao={i} /></td>
+                  <td className="whitespace-nowrap px-4 py-3"><SeloStatus inscricao={i} /></td>
                   <td className="px-4 py-3">
                     <button
                       type="button"

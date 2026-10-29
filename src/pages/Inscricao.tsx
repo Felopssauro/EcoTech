@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState, type FormEvent } from "react"
 import { Link, Navigate, useNavigate } from "react-router-dom"
 import { Check, Download } from "lucide-react"
-import { criarInscricao } from "../api/inscricoes"
+import { criarInscricao } from "../services/inscricoes"
 import { useAuth } from "../hooks/useAuth"
 import { useDadosEvento } from "../hooks/useDadosEvento"
 import { ETAPAS_INSCRICAO } from "../consts/inscricao"
@@ -16,7 +16,7 @@ import {
   validarSenha,
   type ErrosForm,
 } from "../helpers/validacao"
-import { CaixaSelecao, Campo, MensagemErro } from "../components/form/Campos"
+import { CaixaSelecao, Campo, MensagemErro } from "../components/form"
 import FormDadosParticipante from "../components/inscricao/FormDadosParticipante"
 import SeletorMinicursos from "../components/inscricao/SeletorMinicursos"
 import ResumoSelecao from "../components/inscricao/ResumoSelecao"

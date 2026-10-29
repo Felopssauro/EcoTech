@@ -1,6 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react"
-import { obterSite } from "../api/site"
-import { obterSobre } from "../api/sobre"
+import { obterSite } from "../services/site"
+import { obterSobre } from "../services/sobre"
 import { SOBRE_PADRAO } from "../consts/sobre"
 import type { ConfigSobre } from "../types/sobre"
 import { SITE_PADRAO } from "../consts/site"

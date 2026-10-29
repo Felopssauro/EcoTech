@@ -1,11 +1,11 @@
 import { useState, type FormEvent } from "react"
 import { Pencil, Plus, Trash } from "lucide-react"
-import { excluirAtividade, salvarAtividade, type AtividadeForm } from "../../api/admin"
+import { excluirAtividade, salvarAtividade, type AtividadeForm } from "../../services/admin"
 import { BOTAO_PERIGO, BOTAO_PRIMARIO, BOTAO_SECUNDARIO, CARTAO } from "../../consts/estilos"
 import { dataDoDia, formatarMoeda } from "../../helpers/formatar"
 import { horario } from "../../helpers/atividades"
-import { Campo, MensagemErro, MensagemSucesso, Selecao } from "../form/Campos"
-import Modal from "../Modal"
+import { Campo, MensagemErro, MensagemSucesso, Selecao } from "../../components/form"
+import Modal from "../../components/Modal"
 import type { AtividadeComVagas, DadosEvento, Nivel, TipoAtividadeInscricao } from "../../types/inscricao"
 
 const NIVEIS: Nivel[] = ["Iniciante", "Intermediário", "Avançado", "Todos os níveis"]

@@ -3,14 +3,14 @@ import { CalendarCog, History, Info, LayoutTemplate, ListChecks, Users } from "l
 import { useAuth } from "../hooks/useAuth"
 import { useDadosEvento } from "../hooks/useDadosEvento"
 import PainelLateral from "../components/PainelLateral"
-import AdminInscritos from "../components/admin/AdminInscritos"
-import AdminAtividades from "../components/admin/AdminAtividades"
-import AdminSite from "../components/admin/AdminSite"
-import AdminSobre from "../components/admin/AdminSobre"
-import AdminAnteriores from "../components/admin/AdminAnteriores"
+import AdminInscritos from "./admin/AdminInscritos"
+import AdminAtividades from "./admin/AdminAtividades"
+import AdminSite from "./admin/AdminSite"
+import AdminSobre from "./admin/AdminSobre"
+import AdminAnteriores from "./admin/AdminAnteriores"
 import { useSite } from "../hooks/useSite"
-import AdminEvento from "../components/admin/AdminEvento"
-import { MensagemErro } from "../components/form/Campos"
+import AdminEvento from "./admin/AdminEvento"
+import { MensagemErro } from "../components/form"
 
 const SECOES = [
   { id: "inscritos", label: "Inscritos", icon: <Users size={16} />, descricao: "Acompanhe quem se inscreveu, os pedidos de acessibilidade e exporte a lista." },

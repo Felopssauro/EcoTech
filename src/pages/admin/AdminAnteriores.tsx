@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { listarEventosAnteriores } from "../../api/site"
+import { listarEventosAnteriores } from "../../services/site"
 import { CARTAO } from "../../consts/estilos"
-import { MensagemErro } from "../form/Campos"
+import { MensagemErro } from "../../components/form"
 import type { EventoAnterior } from "../../types/site"
 
 export default function AdminAnteriores() {

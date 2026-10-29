@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react"
-import { atualizarEvento } from "../../api/admin"
+import { atualizarEvento } from "../../services/admin"
 import { BOTAO_PRIMARIO, BOTAO_SECUNDARIO, CARTAO } from "../../consts/estilos"
-import { Campo, MensagemErro, MensagemSucesso } from "../form/Campos"
+import { Campo, MensagemErro, MensagemSucesso } from "../../components/form"
 import type { DadosEvento } from "../../types/inscricao"
 
 interface Props {
